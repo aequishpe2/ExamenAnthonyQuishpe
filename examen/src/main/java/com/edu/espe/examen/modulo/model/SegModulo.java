@@ -15,7 +15,7 @@ public class SegModulo implements Serializable {
 
     @Id
     @Column(name = "COD_MODULO", length = 16, nullable = false)
-    private String cod;
+    private String codModulo;
     @NotNull
     @Column(name = "NOMBRE", length = 50, nullable = false)
     private String nombre;
@@ -26,16 +26,16 @@ public class SegModulo implements Serializable {
     public SegModulo() {
     }
 
-    public SegModulo(String cod) {
-        this.cod = cod;
+    public SegModulo(String codModulo) {
+        this.codModulo = codModulo;
     }
 
-    public String getCod() {
-        return cod;
+    public String getCodModulo() {
+        return codModulo;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
+    public void setCodModulo(String codModulo) {
+        this.codModulo = codModulo;
     }
 
     public String getNombre() {
@@ -58,7 +58,7 @@ public class SegModulo implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((cod == null) ? 0 : cod.hashCode());
+        result = prime * result + ((codModulo == null) ? 0 : codModulo.hashCode());
         return result;
     }
 
@@ -71,17 +71,17 @@ public class SegModulo implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         SegModulo other = (SegModulo) obj;
-        if (cod == null) {
-            if (other.cod != null)
+        if (codModulo == null) {
+            if (other.codModulo != null)
                 return false;
-        } else if (!cod.equals(other.cod))
+        } else if (!codModulo.equals(other.codModulo))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "SegModulo [cod=" + cod + ", nombre=" + nombre + ", version=" + version + "]";
+        return "SegModulo [cod=" + codModulo + ", nombre=" + nombre + ", version=" + version + "]";
     }
 
 }

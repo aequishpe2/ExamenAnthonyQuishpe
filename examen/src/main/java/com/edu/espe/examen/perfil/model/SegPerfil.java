@@ -1,20 +1,26 @@
-package com.edu.espe.examen.modulo.perfil;
+package com.edu.espe.examen.perfil.model;
 
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
+
+import com.edu.espe.examen.modulo.model.SegModulo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "SEG_PERFIL")
 
-public class SegPerfil {
+public class SegPerfil implements Serializable{
 
     @Id
     @Column(name = "COD_PERFIL", length = 16, nullable = false)
-    private String cod;
+    private String codPerfil;
 
     @NotNull
     @Column(name = "NOMBRE", length = 50, nullable = false)
@@ -24,19 +30,23 @@ public class SegPerfil {
     @Column(name = "ESTADO", length = 3, nullable = false)
     private String estado;
 
+    @ManyToOne
+    @JoinColumn(name = "COD_MODULO", referencedColumnName = "COD_MODULO", insertable = false, updatable = false)
+    private SegModulo segModulo;
+
     public SegPerfil() {
     }
 
-    public SegPerfil(String cod) {
-        this.cod = cod;
+    public SegPerfil(String codPerfil) {
+        this.codPerfil = codPerfil;
     }
 
-    public String getCod() {
-        return cod;
+    public String getCodPerfil() {
+        return codPerfil;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
+    public void setCodPerfil(String codPerfil) {
+        this.codPerfil = codPerfil;
     }
 
     public String getNombre() {
@@ -59,7 +69,7 @@ public class SegPerfil {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((cod == null) ? 0 : cod.hashCode());
+        result = prime * result + ((codPerfil == null) ? 0 : codPerfil.hashCode());
         return result;
     }
 
@@ -72,17 +82,17 @@ public class SegPerfil {
         if (getClass() != obj.getClass())
             return false;
         SegPerfil other = (SegPerfil) obj;
-        if (cod == null) {
-            if (other.cod != null)
+        if (codPerfil == null) {
+            if (other.codPerfil != null)
                 return false;
-        } else if (!cod.equals(other.cod))
+        } else if (!codPerfil.equals(other.codPerfil))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "SegPerfil [cod=" + cod + ", nombre=" + nombre + ", estado=" + estado + "]";
+        return "SegPerfil [cod=" + codPerfil + ", nombre=" + nombre + ", estado=" + estado + "]";
     }
 
 }

@@ -2,6 +2,10 @@ package com.edu.espe.examen.usuario.model;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -12,11 +16,11 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "SEG_USUARIO")
 
-public class SegUsuario {
+public class SegUsuario implements Serializable{
 
     @Id
     @Column(name = "COD_USUARIO", length = 30, nullable = false)
-    private String cod;
+    private String codUsuario;
 
     @NotNull
     @Column(name = "COD_PERFIL", length = 8, nullable = false)
@@ -45,40 +49,40 @@ public class SegUsuario {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "FECHA_CREACION", nullable = false)
-    private String fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name = "FECHA_CAMBIO_CLAVE", nullable = false)
-    private String fechaCambioClave;
+    private LocalDate fechaCambioClave;
 
     @NotNull
     @Column(name = "NRO_INTENTOS_FALLIDOS", length = 3, nullable = false)
-    private String nroIntentosFallidos;
+    private LocalDate nroIntentosFallidos;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "FECHA_ULTIMA_SESION", nullable = false)
-    private String fechaUltimaSesion;
+    private LocalDate fechaUltimaSesion;
 
     @NotNull
     @Column(name = "SUELDO", precision = 10, scale = 2, nullable = false)
-    private String sueldo;
+    private BigDecimal sueldo;
 
 
     public SegUsuario() {
     }
 
-    public SegUsuario(String cod) {
-        this.cod = cod;
+    public SegUsuario(String codUsuario) {
+        this.codUsuario = codUsuario;
     }
 
     public String getCod() {
-        return cod;
+        return codUsuario;
     }
 
     public void setCod(String cod) {
-        this.cod = cod;
+        this.codUsuario = cod;
     }
 
     public String getCodPerfil() {
@@ -129,43 +133,43 @@ public class SegUsuario {
         this.estado = estado;
     }
 
-    public String getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getFechaCambioClave() {
+    public LocalDate getFechaCambioClave() {
         return fechaCambioClave;
     }
 
-    public void setFechaCambioClave(String fechaCambioClave) {
+    public void setFechaCambioClave(LocalDate fechaCambioClave) {
         this.fechaCambioClave = fechaCambioClave;
     }
 
-    public String getNroIntentosFallidos() {
+    public LocalDate getNroIntentosFallidos() {
         return nroIntentosFallidos;
     }
 
-    public void setNroIntentosFallidos(String nroIntentosFallidos) {
+    public void setNroIntentosFallidos(LocalDate nroIntentosFallidos) {
         this.nroIntentosFallidos = nroIntentosFallidos;
     }
 
-    public String getFechaUltimaSesion() {
+    public LocalDate getFechaUltimaSesion() {
         return fechaUltimaSesion;
     }
 
-    public void setFechaUltimaSesion(String fechaUltimaSesion) {
+    public void setFechaUltimaSesion(LocalDate fechaUltimaSesion) {
         this.fechaUltimaSesion = fechaUltimaSesion;
     }
 
-    public String getSueldo() {
+    public BigDecimal getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(String sueldo) {
+    public void setSueldo(BigDecimal sueldo) {
         this.sueldo = sueldo;
     }
 
@@ -173,7 +177,7 @@ public class SegUsuario {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((cod == null) ? 0 : cod.hashCode());
+        result = prime * result + ((codUsuario == null) ? 0 : codUsuario.hashCode());
         return result;
     }
 
@@ -186,17 +190,17 @@ public class SegUsuario {
         if (getClass() != obj.getClass())
             return false;
         SegUsuario other = (SegUsuario) obj;
-        if (cod == null) {
-            if (other.cod != null)
+        if (codUsuario == null) {
+            if (other.codUsuario != null)
                 return false;
-        } else if (!cod.equals(other.cod))
+        } else if (!codUsuario.equals(other.codUsuario))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "SegUsuario [cod=" + cod + ", codPerfil=" + codPerfil + ", mail=" + mail + ", nombre=" + nombre
+        return "SegUsuario [cod=" + codUsuario + ", codPerfil=" + codPerfil + ", mail=" + mail + ", nombre=" + nombre
                 + ", telefono=" + telefono + ", clave=" + clave + ", estado=" + estado + ", fechaCreacion="
                 + fechaCreacion + ", fechaCambioClave=" + fechaCambioClave + ", nroIntentosFallidos="
                 + nroIntentosFallidos + ", fechaUltimaSesion=" + fechaUltimaSesion + ", sueldo=" + sueldo + "]";
